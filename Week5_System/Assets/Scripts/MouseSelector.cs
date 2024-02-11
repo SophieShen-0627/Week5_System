@@ -21,7 +21,7 @@ public class MouseSelector : MonoBehaviour
         if (ShowMouse == 2) CreateBlock(CurrentBlockIndex);
         if (ShowMouse == 1 && CheckMousePos() < 5)
         {
-            DeleteBlock(CurrentBlockIndex);
+            DeleteBlock();
         }
         if (ShowMouse != 2 && CheckMousePos() < 5)
         {
@@ -42,7 +42,7 @@ public class MouseSelector : MonoBehaviour
         }
     }
 
-    private void DeleteBlock(int index)
+    private void DeleteBlock()
     {
         Vector2 MousePos = Input.mousePosition;
         Vector2 PosInWorld = Camera.main.ScreenToWorldPoint(MousePos);
@@ -53,7 +53,7 @@ public class MouseSelector : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 Destroy(hit.collider.gameObject);
-                ColorManager.instance.ColorNum += index + 1;
+                ColorManager.instance.ColorNum += hit.collider.GetComponent<Block>().BlockIndex + 1;
             }
         }
     }
