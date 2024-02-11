@@ -319,7 +319,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8cc7ed1a7c171c846a14b912f32a066c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -329,7 +329,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6702521757234009815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,5 +362,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805b27947ee2b8a43a4459d6a4001d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayermovingSpeed: 3
+  PlayermovingSpeed: 1
   PositionIndicate: {fileID: 1484821144747703452}

@@ -13,10 +13,6 @@ public class MouseSelector : MonoBehaviour
 
 
     [SerializeField] int ShowMouse = 0;         //0:too far to show; 1: not show, able to delete; 2: show, able to create.
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +22,9 @@ public class MouseSelector : MonoBehaviour
         if (ShowMouse == 1 && CheckMousePos() < 5)
         {
             DeleteBlock(CurrentBlockIndex);
+        }
+        if (ShowMouse != 2 && CheckMousePos() < 5)
+        {
             SelectColor();
         }
     }
@@ -36,7 +35,7 @@ public class MouseSelector : MonoBehaviour
         Vector2 PosInWorld = Camera.main.ScreenToWorldPoint(MousePos);
         PosInWorld = new Vector2(CountMiddlePoint(PosInWorld.x), CountMiddlePoint(PosInWorld.y));
 
-        if (Input.GetMouseButtonDown(0) && ColorManager.instance.ColorNum >= Index)
+        if (Input.GetMouseButtonDown(0) && ColorManager.instance.ColorNum >= Index +1)
         {
             ColorManager.instance.ColorNum -= Index + 1;
             Instantiate(Blocks[Index], PosInWorld, Quaternion.identity);

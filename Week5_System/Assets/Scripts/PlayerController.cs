@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float PlayermovingSpeed = 2f;
-    private Rigidbody2D playerrigidbody;
+    private float PlayermovingSpeed = 3f;
+    private Rigidbody2D RB;
 
     [SerializeField] GameObject PositionIndicate;
     void Start()
     {
-        playerrigidbody = GetComponent<Rigidbody2D>();
+        RB = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        PlayerMove();
+        if (Input.GetAxis("Horizontal") != 0) PlayerMove();
         PlayerShowSelectableColor();
     }
 
     private void PlayerMove()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
-        playerrigidbody.velocity = new Vector2(moveInput * PlayermovingSpeed, playerrigidbody.velocity.y);
+        RB.position += new Vector2(moveInput * PlayermovingSpeed * Time.fixedDeltaTime * 0.1f, 0);
+        //RB.velocity = new Vector2(moveInput * PlayermovingSpeed, RB.velocity.y);
     }
 
     private void PlayerShowSelectableColor()
